@@ -4,9 +4,9 @@ import java.util.Scanner;
 class SumMessage {
 	int sum_card; //合計値計算
 
-	public String receiVe(int sum_card1, int sum_card2) { //最初に２枚受け取るメソッド
-		sum_card += sum_card1;
-		sum_card += sum_card2;
+	public String receive(int card1, int card2) { //最初に２枚受け取るメソッド
+		sum_card += card1;
+		sum_card += card2;
 		String result = "";
 
 		if (sum_card == 21) { //受け取った値を元にstrに代入する値を分岐
@@ -22,9 +22,9 @@ class SumMessage {
 		return result;
 	}
 
-	public String receiVe(int sum_card1) { //引数を１つだけ受け取るメソッド
+	public String receive(int card1) { //引数を１つだけ受け取るメソッド
 		String result = "";
-		result = this.receiVe(sum_card1, 0); //logicの中身によって結果が変わる。
+		result = this.receive(card1, 0); //logicの中身によって結果が変わる。
 		return result;
 	}
 
@@ -43,14 +43,14 @@ public class BlackJack {
 
 			System.out.println(card1 + "の値を受け取りました");
 			System.out.println(card2 + "の値を受け取りました");
-			System.out.println(msg.receiVe(card1, card2));
+			System.out.println(msg.receive(card1, card2));
 
 			if (msg.sum_card < 16) { //jackが16より小さかったら
 				while (msg.sum_card < 16) {
-					String sum_card3 = sc.next();//値を受け取る。
-					if (sum_card3 != null) {
-						card3 = Integer.parseInt(sum_card3);
-						System.out.println(msg.receiVe(card3));//スキャナーで受け取った値を引数に渡す
+					String str_card3 = sc.next();//値を受け取る。
+					if (str_card3 != null) {
+						card3 = Integer.parseInt(str_card3);
+						System.out.println(msg.receive(card3));//スキャナーで受け取った値を引数に渡す
 					}
 				}
 			}
