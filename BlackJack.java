@@ -1,19 +1,19 @@
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
-class Method {
-	static int jack; //合計値計算
-	String str = ""; //戻り値格納
+class SumMessage {
+	int sum_card; //合計値計算
 
-	public String logic(int card1, int card2) { //最初に２枚受け取るメソッド
-		jack += card1;
-		jack += card2;
+	public String logic(int sum_card1, int sum_card2) { //最初に２枚受け取るメソッド
+		sum_card += sum_card1;
+		sum_card += sum_card2;
+		String str = "";
 
-		if (Method.jack == 21) { //受け取った値を元にstrに代入する値を分岐
+		if (sum_card == 21) { //受け取った値を元にstrに代入する値を分岐
 			str = "BlackJack!!!";
-		} else if (Method.jack > 21) {
+		} else if (sum_card > 21) {
 			str = "Pig!";
-		} else if (Method.jack > 16) {
+		} else if (sum_card > 16) {
 			str = "STAND";
 
 		} else {
@@ -22,39 +22,35 @@ class Method {
 		return str;
 	}
 
-	public String logic(int card1) { //引数を１つだけ受け取るメソッド
-		this.logic(card1, 0);
-		return str;
+	public String logic(int sum_card1) { //引数を１つだけ受け取るメソッド
+		String result = "";
+		result = this.logic(sum_card1, 0); //logicの中身によって結果が変わる。
+		return result;
 	}
 
 }
 
 public class BlackJack {
 	public static void main(String[] args) {
-
 		int card3;
 		Scanner sc = new Scanner(System.in);
-
-		ArrayList<Integer> array = new ArrayList<>();
 
 		try {
 			int card1 = Integer.parseInt(args[0]); //コマンドラインから受け取った値を整数に変換
 			int card2 = Integer.parseInt(args[1]);
 
-			Method mtd = new Method(); //メソッドクラスのオブジェクトを生成あたいf
+			SumMessage msg = new SumMessage(); //メソッドクラスのオブジェクトを生成あたいf
 
-			System.out.println(mtd.logic(card1, card2));
+			System.out.println(card1 + "の値を受け取りました");
+			System.out.println(card2 + "の値を受け取りました");
+			System.out.println(msg.logic(card1, card2));
 
-			if (Method.jack < 16) { //jackが16より小さかったら
-				while (Method.jack < 16) {
+			if (msg.sum_card < 16) { //jackが16より小さかったら
+				while (msg.sum_card < 16) {
 					String sc1 = sc.next();//値を受け取る。
 					if (sc1 != null) {
 						card3 = Integer.parseInt(sc1);
-						array.add(card3);//１つだけ値を受け取り配列に格納
-					}
-
-					for (int jack : array) {
-						System.out.println(mtd.logic(jack));//配列に格納された値を取り出し引数に渡す。
+						System.out.println(msg.logic(card3));//スキャナーで受け取った値を引数に渡す
 					}
 				}
 			}
