@@ -10,10 +10,10 @@ public class WorldTime{
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
 		for (int i = 0; i < N; i++) {
-			String s = sc.next();
-			System.out.print(s + " ");
-			int ss = sc.nextInt();
-			System.out.println(cl.get(Calendar.HOUR) + ss + ":" +
+			String country = sc.next();
+			System.out.print(country + " ");
+			int c_time = sc.nextInt();
+			System.out.println(cl.get(Calendar.HOUR) + c_time + ":" +
 					cl.get(Calendar.MINUTE));
 		}
 	}
