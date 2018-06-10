@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -13,20 +12,20 @@ public class Commendation {
 		String people = null;
 		String people2 = null;
 		int peopleM = 0;
-		LinkedHashSet<String> member = new LinkedHashSet<>(); //購入者の名前
+
 		Map<String, Integer> memberPay = new HashMap<>();//購入者と購入金額をソートする配列
 
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt(); //人数
 		for (int i = 0; i < N; i++) {
 			people = sc.next();
-			member.add(people);
+			memberPay.put(people,peopleM);
 		}
 		int bookN = sc.nextInt();//書籍の購入数
 		for (int j = 0; j < bookN; j++) {
-			people2 = sc.next();
+			people = sc.next();
 			peopleM = sc.nextInt();
-			memberPay.put(people2, peopleM);
+			memberPay.put(people, peopleM);
 		}
 		List<Entry<String, Integer>> list_entries = new ArrayList<Entry<String, Integer>>(memberPay.entrySet());
 		Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
